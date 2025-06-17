@@ -11,18 +11,47 @@ def print_top_movies(top_movies_list):
         movie_name,rating = movie
         print(f'Movie: {movie_name} | Avarage Rating: {rating}')
 
-db = DataManager()
+def print_menu():
+    print('1. Adicionar avaliação ao banco de dados')
+    print('2. Listar minhas avaliações')
+    print('3. Listar filmes mais bem avaliados')
+    print('4. Sair')
 
-movie = Movie('movie_test','user_test',3)
-movie2 = Movie('movie2','user_test',4)
-movie3 = Movie('movie3','user_test',2.5)
-movie4 = Movie('movie2','user_test2',3)
-db.add_review(movie)
-db.add_review(movie2)
-db.delete_review(movie.get_movie_name(),movie.get_user_name())
-db.add_review(movie3)
-db.add_review(movie4)
-all_movies = db.list_movies_rating()
-user_reviews = db.list_user_reviews('user_test')
-top_movies = db.list_top_movies()
-print_top_movies(top_movies)
+def add_review(db):
+    pass
+
+def list_user_reviews(db):
+    pass
+
+def list_top_movies(db):
+    pass
+
+def close_app(db):
+    pass
+
+def interface(db):
+
+    while(1):
+        print_menu()
+        try:
+            option = int (input('Digite a opção desejada(Ex.: \'1\' para Adicionar avaliação ao banco de dados): '))
+        except:
+            raise(TypeError('Digite um número inteiro para identificação do comando'))
+            continue
+        if option == 1:
+            add_review(db)
+        elif option == 2:
+            list_user_reviews(db)
+        elif option == 3 :
+            list_top_movies(db)
+        elif option == 4:
+            close_app(db)
+        else:
+            raise(ValueError('Comando inválido'))
+            continue
+        
+
+
+if __name__ == '__main__':
+    db = DataManager()
+    interface(db)

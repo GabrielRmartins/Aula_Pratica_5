@@ -60,6 +60,7 @@ class DataManager:
         SELECT *
         FROM movies_rating
         WHERE user_name = ?
+        ORDER BY rating DESC
         '''
         self.cursor.execute(query,(user_name,))
         user_movies = self.cursor.fetchall()
